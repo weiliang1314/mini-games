@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0
+        }
+        
+        .box {
+            width: 600px;
+            height: 600px;
+            margin: 0 auto;
+        }
+        
+        .rom {
+            overflow: hidden;
+        }
+        
+        .grid {
+            float: left;
+            width: 30px;
+            height: 30px;
+            border: 1px solid slategrey;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+
+<body>
+    <button id="a">再来一局</button>
+    <!--分别导入障碍、食物、地图、整体、蛇-->
+    <script src="./back.js"></script>
+    <script src="./foot.js"></script>
+    <script src="./map.js"></script>
+    <script src="./game.js"></script>
+    <script src="./sneck.js"></script>
+    <script type="text/javascript">
+        //实例化每个
+        let m = new map(20, 20, 600, 600)
+        let f = new foot(2, 6)
+            //定义蛇的图片
+        let sneckobj = {
+            head_pic: ["./img/1.png"],
+            body_pic: ["./img/3.png"],
+            tail_pic: ["./img/3.png"]
+        }
+        let s = new sneck(sneckobj)
+        let b = new back('img/2.png')
+        let g = new game(m, f, s, b)
+
+        console.log(g)
+        let a = document.getElementById('a')
+        a.onclick = function() {
+            new game(m, f, s, b)
+
+        }
+    </script>
+</body>
+
+</html>
